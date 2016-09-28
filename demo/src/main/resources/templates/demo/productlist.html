@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1"/>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link href="@{css/style.css}" rel="stylesheet" type="text/css"/>
+<title>Product List</title>
+</head>
+<body>
+<h2>Product List</h2>
+<div class="container">
+<table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>NAME</th>
+        <th>CREATION DATE</th>
+        <th>PHOTO</th>
+      </tr>
+    </thead>
+    <tbody>
+    <tr th:each="product, iterStat : ${productlist}" class="media comments">
+  		<td th:text="${product.id}"></td>
+  		<td th:text="${product.name}"></td>
+  		<td th:text="${#dates.format(product.creationDate,'MM/dd/yyyy')}"></td>
+  		<td><img th:src="@{'/images/'+${product.photo}}"/></td>
+  	</tr>
+    </tbody>
+</table>
+</div>
+</body>
+</html>
